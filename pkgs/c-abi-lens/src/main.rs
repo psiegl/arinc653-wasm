@@ -136,7 +136,7 @@ fn main() -> Result<()> {
     c_code_snippets.push("\n\n".into());
 
     // code gen boilerplate
-    let prefix = "static inline";
+    let prefix = "static inline __attribute__((always_inline))";
     let namespace_prefix = "camw";
 
     // Print information about the typedefs
@@ -331,7 +331,7 @@ fn generate_getter_setter(
 
     let mut c_code_snippets = Vec::new();
 
-    let prefix = "static inline";
+    let prefix = "static inline __attribute__((always_inline))";
     let namespace_prefix = "camw";
     let function_name_gen =
         |op| format!("{namespace_prefix}_{op}__{struct_name}__{field_name}");
@@ -500,7 +500,7 @@ fn generate_typedef_getter_setter(
 ) -> Result<Vec<String>> {
     let mut c_code_snippets = Vec::new();
 
-    let prefix = "static inline";
+    let prefix = "static inline __attribute__((always_inline))";
     let namespace_prefix = "camw";
     let function_name_gen =
     |op| format!("{namespace_prefix}_{op}__{typedef_name}");
